@@ -33,7 +33,7 @@ Third-Party Dependencies:
 * /setup - settings for connecting to databases, etc.
 * /tests - test cases implementation
 * README.md - project's detailed description
-* run_test.bat - entry point to begin tests execution
+* run_tests.bat - entry point to begin tests execution
 
 
 ## Infrastructure setup
