@@ -2,7 +2,9 @@ import pytest
 # import pyodbc
 
 
-# @pytest.fixture(scope='module')
+@pytest.fixture(scope='module')
+def db_session():
+    pass
 # def db_session(variables):
     # server = variables.get("server")
     # db_name = variables.get("db_name")
@@ -15,10 +17,6 @@ import pytest
     # yield db_session
     # print(f"\n*** Disconnected from '{db_name}' database! ***")
     # db_session.close()
-
-
-def db_session():
-    pass
 
 
 @pytest.fixture
