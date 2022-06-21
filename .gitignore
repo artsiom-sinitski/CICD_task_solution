@@ -1,0 +1,13 @@
+/.idea/.gitignore
+/.pytest_cache/CACHEDIR.TAG
+/.pytest_cache/v/cache/lastfailed
+/.idea/misc.xml
+/.idea/modules.xml
+/.pytest_cache/v/cache/nodeids
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/Pytest_task.iml
+/.pytest_cache/README.md
+/.pytest_cache/v/cache/stepwise
+/logs/assets/style.css
+/logs/Test_Report.html
+/.idea/vcs.xml
