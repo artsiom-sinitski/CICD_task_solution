@@ -15,7 +15,7 @@ pipeline {
             }
             steps {
                 echo "Copying tested source code to the Release branch..."
-                sh "git merge -X release origin/master"
+                sh "git merge -X  origin/master origin/release"
             }
         }
     }
