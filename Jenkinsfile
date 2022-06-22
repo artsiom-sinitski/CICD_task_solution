@@ -1,15 +1,21 @@
 pipeline {
     agent any
     stages {
-        stage('CI step') {
+        stage('Test') {
             steps {
                 echo "Executing test cases..."
                 sh "pytest ./tests/test_AdventureWorks2019DB.py"
             }
         }
-        stage('CD step') {
+        stage('Release') {
+            when {
+              expression {
+                currentBuild.result == null || currentBuild.result == 'SUCCESS'
+              }
+            }
             steps {
-                echo "Copiying cource code to release branch..."
+                echo "Copying tested source code to the Release branch..."
+                sh "git merge -X release master"
             }
         }
     }
