@@ -1,0 +1,33 @@
+pipeline {
+    agent any
+    stages {
+        stage('Git Clone') {
+            steps {
+                git branch: 'master', credentialsId: 'Jenkins', url: 'git@github.com:artsiom-sinitski/CICD_task_solution.git'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo "Executing test cases..."
+                sh "pytest ./tests/test_AdventureWorks2019DB.py"
+            }
+        }
+        stage('Release') {
+            when {
+              expression {
+                currentBuild.result == null || currentBuild.result == 'SUCCESS'
+              }
+            }
+            steps {
+                sshagent(credentials:["Jenkins"]) {
+                    echo "Copying tested source code to the Release branch..."
+                    sh '''
+                        git checkout release
+                        git merge -Xtheirs --no-edit master
+                        git push --set-upstream origin release
+                    '''
+                }
+            }
+        }
+    }
+}
